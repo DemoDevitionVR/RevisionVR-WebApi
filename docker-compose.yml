@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  webapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-platform-container
+    image: test-platform-image:latest
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 8888:80
+      - 4444:443
+    
