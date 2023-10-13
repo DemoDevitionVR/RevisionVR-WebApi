@@ -1,4 +1,4 @@
-﻿namespace Demo.Revition.Service.DTOs.Devices;
+﻿namespace RevisionVR.Service.DTOs.Devices;
 
 public class DeviceCreationDto
 {

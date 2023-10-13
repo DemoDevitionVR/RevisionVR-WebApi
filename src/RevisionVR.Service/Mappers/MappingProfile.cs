@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Demo.Revition.Domain.Entities.Devices;
-using Demo.Revition.Domain.Entities.Positions;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Service.DTOs.Positions;
+using RevisionVR.Domain.Entities.Devices;
+using RevisionVR.Domain.Entities.Positions;
+using RevisionVR.Service.DTOs.Devices;
+using RevisionVR.Service.DTOs.Positions;
 
-namespace Demo.Revition.Service.Mappers;
+namespace RevisionVR.Service.Mappers;
 
 public class MappingProfile : Profile
 {

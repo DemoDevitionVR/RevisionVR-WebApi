@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Revition.WepApi.Controllers;
+namespace RevisionVR.WepApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -1,7 +1,7 @@
-﻿using Demo.Revition.Domain.Commons;
-using Demo.Revition.Domain.Entities.Positions;
+﻿using RevisionVR.Domain.Commons;
+using RevisionVR.Domain.Entities.Positions;
 
-namespace Demo.Revition.Domain.Entities.Devices;
+namespace RevisionVR.Domain.Entities.Devices;
 
 public class Device : Auditable
 {

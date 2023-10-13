@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Demo.Revition.WepApi.Models;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Service.Interfaces.Devices;
+using RevisionVR.WepApi.Models;
+using RevisionVR.Service.DTOs.Devices;
+using RevisionVR.Service.Interfaces.Devices;
 
-namespace Demo.Revition.WepApi.Controllers;
+namespace RevisionVR.WepApi.Controllers;
 
 public class DevicesController : BaseController
 {

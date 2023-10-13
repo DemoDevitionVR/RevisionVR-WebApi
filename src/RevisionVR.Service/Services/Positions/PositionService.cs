@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Demo.Revition.Service.Excaptions;
-using Demo.Revition.Service.DTOs.Positions;
-using Demo.Revition.Domain.Entities.Devices;
-using Demo.Revition.DataAccess.IRepositories;
-using Demo.Revition.Domain.Entities.Positions;
-using Demo.Revition.Service.Interfaces.Positions;
+using RevisionVR.Service.Excaptions;
+using RevisionVR.Service.DTOs.Positions;
+using RevisionVR.Domain.Entities.Devices;
+using RevisionVR.DataAccess.IRepositories;
+using RevisionVR.Domain.Entities.Positions;
+using RevisionVR.Service.Interfaces.Positions;
 
-namespace Demo.Revition.Service.Services.Positions;
+namespace RevisionVR.Service.Services.Positions;
 
 public class PositionService : IPositionService
 {

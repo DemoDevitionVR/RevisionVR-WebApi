@@ -1,4 +1,4 @@
-﻿namespace Demo.Revition.Domain.Commons;
+﻿namespace RevisionVR.Domain.Commons;
 
 public abstract class Auditable
 {

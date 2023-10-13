@@ -1,6 +1,6 @@
-﻿using Demo.Revition.Service.DTOs.Positions;
+﻿using RevisionVR.Service.DTOs.Positions;
 
-namespace Demo.Revition.Service.Interfaces.Positions;
+namespace RevisionVR.Service.Interfaces.Positions;
 
 public interface IPositionService
 {

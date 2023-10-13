@@ -1,4 +1,4 @@
-﻿namespace Demo.Revition.WepApi.Models;
+﻿namespace RevisionVR.WepApi.Models;
 
 public class Response
 {

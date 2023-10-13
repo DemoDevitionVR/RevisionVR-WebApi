@@ -1,13 +1,13 @@
-﻿using Demo.Revition.DataAccess.Contexts;
-using Demo.Revition.DataAccess.IRepositories;
-using Demo.Revition.DataAccess.Repositories;
-using Demo.Revition.Service.Interfaces.Devices;
-using Demo.Revition.Service.Interfaces.Positions;
-using Demo.Revition.Service.Mappers;
-using Demo.Revition.Service.Services.Devices;
-using Demo.Revition.Service.Services.Positions;
+﻿using RevisionVR.DataAccess.Contexts;
+using RevisionVR.DataAccess.IRepositories;
+using RevisionVR.DataAccess.Repositories;
+using RevisionVR.Service.Interfaces.Devices;
+using RevisionVR.Service.Interfaces.Positions;
+using RevisionVR.Service.Mappers;
+using RevisionVR.Service.Services.Devices;
+using RevisionVR.Service.Services.Positions;
 
-namespace Demo.Revition.WepApi.Extentions;
+namespace RevisionVR.WepApi.Extentions;
 
 public static class ServiceCollection
 {

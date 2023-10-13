@@ -1,6 +1,6 @@
-﻿using Demo.Revition.Service.DTOs.Devices;
+﻿using RevisionVR.Service.DTOs.Devices;
 
-namespace Demo.Revition.Service.Interfaces.Devices;
+namespace RevisionVR.Service.Interfaces.Devices;
 
 public interface IDeviceService
 {

@@ -1,8 +1,8 @@
-﻿using Demo.Revition.Domain.Entities.Devices;
-using Demo.Revition.Domain.Entities.Positions;
+﻿using RevisionVR.Domain.Entities.Devices;
+using RevisionVR.Domain.Entities.Positions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.Revition.DataAccess.Contexts;
+namespace RevisionVR.DataAccess.Contexts;
 
 public class AppDbContext : DbContext
 {
