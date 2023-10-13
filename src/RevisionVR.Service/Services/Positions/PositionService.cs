@@ -41,21 +41,16 @@ public class PositionService : IPositionService
 
     }
 
-    public async Task<IEnumerable<UserPositionResultDto>> UpdateAsync(long id, UserPositionUpdateDto dto)
+    public async Task<IEnumerable<UserPositionResultDto>> UpdateAsync(long deviceId, UserPositionUpdateDto dto)
     {
-        var dbResult = await _repository.SelectAsync(i => i.Id.Equals(id));
-
+        var dbResult = await _repository.SelectAsync(i => i.DeviceId.Equals(deviceId), new[] {"Device"});
         if (dbResult is null)
-            throw new DemoException(404, "Not found User Position");
-
-        var dbDevice = await _deviceRepository.SelectAsync(x => x.DeviceId.Equals(dto.DeviceId));
-
-        if (dbDevice is null)
             throw new DemoException(404, "Not found Device");
 
         var userPosition = _mapper.Map(dto, dbResult);
-        userPosition.Device = dbDevice;
-        _repository.Update(userPosition);
+        userPosition.Id = deviceId;
+        userPosition.UpdatedAt = DateTime.UtcNow;
+        
         await _repository.SaveAsync();
 
         return this.GetAll(userPosition.Id);
