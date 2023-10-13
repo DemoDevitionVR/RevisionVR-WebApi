@@ -39,7 +39,6 @@ public class DeviceService : IDeviceService
             throw new DemoException(404, "This device is not found");
 
         var mappedDevice = _mapper.Map(dto, existDevice);
-        _repository.Update(mappedDevice);
         await _repository.SaveAsync();
 
         return _mapper.Map<DeviceResultDto>(mappedDevice);
@@ -52,7 +51,6 @@ public class DeviceService : IDeviceService
 
         existDevice.Id = id;
         existDevice.IsActive = isActive;
-        _repository.Update(existDevice);
         await _repository.SaveAsync();
 
         return _mapper.Map<DeviceResultDto>(existDevice);
