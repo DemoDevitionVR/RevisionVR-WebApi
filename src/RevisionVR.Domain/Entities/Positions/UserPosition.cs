@@ -1,7 +1,7 @@
-﻿using Demo.Revition.Domain.Commons;
-using Demo.Revition.Domain.Entities.Devices;
+﻿using RevisionVR.Domain.Commons;
+using RevisionVR.Domain.Entities.Devices;
 
-namespace Demo.Revition.Domain.Entities.Positions;
+namespace RevisionVR.Domain.Entities.Positions;
 
 public class UserPosition : Auditable
 {

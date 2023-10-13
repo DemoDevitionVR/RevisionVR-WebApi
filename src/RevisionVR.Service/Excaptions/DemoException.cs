@@ -1,4 +1,4 @@
-﻿namespace Demo.Revition.Service.Excaptions
+﻿namespace RevisionVR.Service.Excaptions
 {
     public class DemoException : Exception
     {

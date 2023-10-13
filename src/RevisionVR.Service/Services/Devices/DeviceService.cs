@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Demo.Revition.Service.Excaptions;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Domain.Entities.Devices;
-using Demo.Revition.DataAccess.IRepositories;
-using Demo.Revition.Service.Interfaces.Devices;
+using RevisionVR.Service.Excaptions;
+using RevisionVR.Service.DTOs.Devices;
+using RevisionVR.Domain.Entities.Devices;
+using RevisionVR.DataAccess.IRepositories;
+using RevisionVR.Service.Interfaces.Devices;
 
-namespace Demo.Revition.Service.Services.Devices;
+namespace RevisionVR.Service.Services.Devices;
 
 public class DeviceService : IDeviceService
 {

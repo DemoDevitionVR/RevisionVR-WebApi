@@ -1,4 +1,4 @@
-﻿namespace Demo.Revition.Service.DTOs.Positions;
+﻿namespace RevisionVR.Service.DTOs.Positions;
 
 public class UserPositionCreationDto
 {

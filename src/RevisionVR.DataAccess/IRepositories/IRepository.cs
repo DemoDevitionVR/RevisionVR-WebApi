@@ -1,7 +1,7 @@
-﻿using Demo.Revition.Domain.Commons;
+﻿using RevisionVR.Domain.Commons;
 using System.Linq.Expressions;
 
-namespace Demo.Revition.DataAccess.IRepositories;
+namespace RevisionVR.DataAccess.IRepositories;
 
 public interface IRepository<TEntity> where TEntity : Auditable
 {

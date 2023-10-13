@@ -1,11 +1,11 @@
-﻿using Demo.Revition.DataAccess.Contexts;
-using Demo.Revition.DataAccess.IRepositories;
-using Demo.Revition.Domain.Commons;
+﻿using RevisionVR.DataAccess.Contexts;
+using RevisionVR.DataAccess.IRepositories;
+using RevisionVR.Domain.Commons;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
-namespace Demo.Revition.DataAccess.Repositories;
+namespace RevisionVR.DataAccess.Repositories;
 
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditable
 {

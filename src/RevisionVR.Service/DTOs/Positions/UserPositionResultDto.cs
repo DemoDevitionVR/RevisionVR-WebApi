@@ -1,6 +1,6 @@
-﻿using Demo.Revition.Service.DTOs.Devices;
+﻿using RevisionVR.Service.DTOs.Devices;
 
-namespace Demo.Revition.Service.DTOs.Positions;
+namespace RevisionVR.Service.DTOs.Positions;
 
 public class UserPositionResultDto
 {

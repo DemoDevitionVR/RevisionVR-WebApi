@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Demo.Revition.WepApi.Models;
-using Demo.Revition.Service.DTOs.Positions;
-using Demo.Revition.Service.Interfaces.Positions;
+using RevisionVR.WepApi.Models;
+using RevisionVR.Service.DTOs.Positions;
+using RevisionVR.Service.Interfaces.Positions;
 
-namespace Demo.Revition.WepApi.Controllers;
+namespace RevisionVR.WepApi.Controllers;
 
 public class PositionsController : BaseController
 {

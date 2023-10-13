@@ -1,5 +1,6 @@
-using Demo.Revition.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
+using RevisionVR.DataAccess.Contexts;
+using RevisionVR.WepApi.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddServices();
 
 var app = builder.Build();
 
