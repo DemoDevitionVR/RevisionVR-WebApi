@@ -15,6 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj" />
     <ProjectReference Include="..\..\RevisionVR.Service\RevisionVR.Service.csproj" />
+    <ProjectReference Include="..\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj" />
+    <ProjectReference Include="..\RevisionVR.Service\RevisionVR.Service.csproj" />
   </ItemGroup>
 
 </Project>

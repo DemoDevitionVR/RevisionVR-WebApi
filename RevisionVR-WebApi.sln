@@ -5,11 +5,11 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.WebApi", "src\RevisionVR.WebApi\RevisionVR.WebApi.csproj", "{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.Domain", "src\RevisionVR.Domain\RevisionVR.Domain.csproj", "{3F186B17-1883-4063-ADBC-5BCC15C80508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.Domain", "src\RevisionVR.Domain\RevisionVR.Domain.csproj", "{3F186B17-1883-4063-ADBC-5BCC15C80508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.Service", "RevisionVR.Service\RevisionVR.Service.csproj", "{4F16CBB0-2EAA-45A1-93F3-E0DDA86ED69F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.Service", "src\RevisionVR.Service\RevisionVR.Service.csproj", "{777108C2-E2F0-4232-A6BE-9298539FD17C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.DataAccess", "RevisionVR.DataAccess\RevisionVR.DataAccess.csproj", "{FB24BEA0-9502-408D-9628-47B0CBC691CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.DataAccess", "src\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj", "{24C74CC7-044E-47AB-9A03-C859881048D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F16CBB0-2EAA-45A1-93F3-E0DDA86ED69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F16CBB0-2EAA-45A1-93F3-E0DDA86ED69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F16CBB0-2EAA-45A1-93F3-E0DDA86ED69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F16CBB0-2EAA-45A1-93F3-E0DDA86ED69F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB24BEA0-9502-408D-9628-47B0CBC691CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB24BEA0-9502-408D-9628-47B0CBC691CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB24BEA0-9502-408D-9628-47B0CBC691CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB24BEA0-9502-408D-9628-47B0CBC691CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{777108C2-E2F0-4232-A6BE-9298539FD17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777108C2-E2F0-4232-A6BE-9298539FD17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777108C2-E2F0-4232-A6BE-9298539FD17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777108C2-E2F0-4232-A6BE-9298539FD17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C74CC7-044E-47AB-9A03-C859881048D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C74CC7-044E-47AB-9A03-C859881048D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C74CC7-044E-47AB-9A03-C859881048D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C74CC7-044E-47AB-9A03-C859881048D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
