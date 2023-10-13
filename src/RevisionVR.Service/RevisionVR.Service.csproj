@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj" />
-    <ProjectReference Include="..\src\RevisionVR.Domain\RevisionVR.Domain.csproj" />
+    <ProjectReference Include="..\RevisionVR.Domain\RevisionVR.Domain.csproj" />
   </ItemGroup>
 
 </Project>
