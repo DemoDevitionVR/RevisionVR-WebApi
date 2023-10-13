@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.DataAccess.Contexts;
+using RevisionVR.WebApi.Middlewares;
 using RevisionVR.WepApi.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
