@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.Service.Excaptions;
+using RevisionVR.DataAccess.Contexts;
 using RevisionVR.Service.DTOs.Devices;
 using RevisionVR.Domain.Entities.Devices;
-using RevisionVR.DataAccess.IRepositories;
 using RevisionVR.Service.Interfaces.Devices;
 
 namespace RevisionVR.Service.Services.Devices;
@@ -11,65 +11,67 @@ namespace RevisionVR.Service.Services.Devices;
 public class DeviceService : IDeviceService
 {
     private readonly IMapper _mapper;
-    private readonly IRepository<Device> _repository;
-    public DeviceService(IMapper mapper, IRepository<Device> repository)
+    private readonly AppDbContext _appDbContext;
+    public DeviceService(IMapper mapper, AppDbContext appDbContext)
     {
         _mapper = mapper;
-        _repository = repository;
+        _appDbContext = appDbContext;
     }
 
     public async Task<DeviceResultDto> CreateAsync(DeviceCreationDto dto)
     {
-        var existDevice = await _repository.SelectAsync(d => d.DeviceId.Equals(dto.DeviceId));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.DeviceId.Equals(dto.DeviceId));
         if (existDevice is not null)
             throw new DemoException(403, "This device already exists");
 
         var mappedDevice = _mapper.Map<Device>(dto);
         mappedDevice.IsActive = true;
-        await _repository.CreateAsync(mappedDevice);
-        await _repository.SaveAsync();
+        await _appDbContext.Devices.AddAsync(mappedDevice);
+        await _appDbContext.SaveChangesAsync();
 
         return _mapper.Map<DeviceResultDto>(mappedDevice);
     }
 
     public async Task<DeviceResultDto> UpdateAsync(long id, DeviceUpdateDto dto)
     {
-        var existDevice = await _repository.SelectAsync(d => d.Id.Equals(id));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.Id.Equals(id));
         if (existDevice is null)
             throw new DemoException(404, "This device is not found");
 
         var mappedDevice = _mapper.Map(dto, existDevice);
-        await _repository.SaveAsync();
+        _appDbContext.Devices.Update(mappedDevice);
+        await _appDbContext.SaveChangesAsync();
 
         return _mapper.Map<DeviceResultDto>(mappedDevice);
     }
     public async Task<DeviceResultDto> UpdateIsActiveAsync(long id, bool isActive)
     {
-        var existDevice = await _repository.SelectAsync(d => d.Id.Equals(id));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.Id.Equals(id));
         if (existDevice is null)
             throw new DemoException(404, "This device is not found");
 
         existDevice.Id = id;
         existDevice.IsActive = isActive;
-        await _repository.SaveAsync();
+        _appDbContext.Devices.Update(existDevice);
+        await _appDbContext.SaveChangesAsync();
 
         return _mapper.Map<DeviceResultDto>(existDevice);
     }
 
     public async Task<bool> DeleteAsync(long id)
     {
-        var existDevice = await _repository.SelectAsync(d => d.Id.Equals(id));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.Id.Equals(id));
         if (existDevice is null)
             throw new DemoException(404, "This device is not found");
 
-        _repository.Delete(existDevice);
-        await _repository.SaveAsync();
+        _appDbContext.Devices.Remove(existDevice);
+        await _appDbContext.SaveChangesAsync();
         return true;
     }
 
     public async Task<DeviceResultDto> GetByIdAsync(long id)
     {
-        var existDevice = await _repository.SelectAsync(d => d.Id.Equals(id));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.Id.Equals(id));
         if (existDevice is null)
             throw new DemoException(404, "This device is not found");
 
@@ -78,7 +80,10 @@ public class DeviceService : IDeviceService
 
     public async Task<IEnumerable<DeviceResultDto>> GetAllAsync()
     {
-        var devices = await _repository.SelectAll().ToListAsync();
+        var devices = await _appDbContext.Devices
+            .AsQueryable()
+            .AsNoTracking()
+            .ToListAsync();
         return _mapper.Map<IEnumerable<DeviceResultDto>>(devices);
     }
 }

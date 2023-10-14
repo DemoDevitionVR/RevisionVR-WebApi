@@ -23,40 +23,32 @@ public class PositionsController : BaseController
         });
 
     [HttpPut("update")]
-    public async Task<IActionResult> PutAsync(long id, UserPositionUpdateDto dto)
+    public async Task<IActionResult> PutAsync(long deviceId, UserPositionUpdateDto dto)
         => Ok(new Response
         {
             StatusCode = 200,
             Message = "Success",
-            Data = await _positionService.UpdateAsync(id, dto)
+            Data = await _positionService.UpdateAsync(deviceId, dto)
         });
 
-    [HttpDelete("delete/{id:long}")]
-    public async Task<IActionResult> DeleteAsync(long id)
+    [HttpDelete("delete/{deviceId:long}")]
+    public async Task<IActionResult> DeleteAsync(long deviceId)
         => Ok(new Response
         {
             StatusCode = 200,
             Message = "Success",
-            Data = await _positionService.DeleteAsync(id)
+            Data = await _positionService.DeleteAsync(deviceId)
         });
 
-    [HttpGet("get/{id:long}")]
-    public async Task<IActionResult> GetByIdAsync(long id)
+    [HttpGet("get/{deviceId:long}")]
+    public async Task<IActionResult> GetByIdAsync(long deviceId)
         => Ok(new Response
         {
             StatusCode = 200,
             Message = "Successs",
-            Data = await _positionService.GetByIdAsync(id)
+            Data = await _positionService.GetByIdAsync(deviceId)
         });
 
-    //[HttpGet("get-by-position/{id:long}")]
-    //public async Task<IActionResult> GetByPositionIdAsync(long id)
-    //    => Ok(new Response
-    //    {
-    //        StatusCode = 200,
-    //        Message = "Successs",
-    //        Data = await _positionService.GetByUserPositionIdAsync(id)
-    //    });
 
     [HttpGet("get-all")]
     public async Task<IActionResult> GetAllAsync()
