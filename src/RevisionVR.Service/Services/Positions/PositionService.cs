@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using RevisionVR.Service.Excaptions;
 using RevisionVR.DataAccess.Contexts;
 using RevisionVR.Service.DTOs.Positions;
-
+using RevisionVR.Domain.Entities.Positions;
+using RevisionVR.Service.Interfaces.Positions;
 
 namespace RevisionVR.Service.Services.Positions;
 
@@ -22,7 +23,6 @@ public class PositionService : IPositionService
     public async Task<IEnumerable<UserPositionResultDto>> CreateAsync(UserPositionCreationDto dto)
     {
         var dbResult = await _appDbContext.Devices.FirstOrDefaultAsync(x => x.DeviceId.Equals(dto.DeviceId));
-
         if (dbResult is null)
             throw new DemoException(403, "Not found Device");
 
@@ -53,7 +53,9 @@ public class PositionService : IPositionService
 
     public async Task<bool> DeleteAsync(long deviceId)
     {
-        var dbResult = await _appDbContext.Positions.FirstOrDefaultAsync(i => i.DeviceId.Equals(deviceId));
+        var dbResult = await _appDbContext.Positions
+            .Include(p => p.Device)
+            .FirstOrDefaultAsync(i => i.DeviceId.Equals(deviceId));
         if (dbResult is null)
             throw new DemoException(404, "Not Found Position");
 
