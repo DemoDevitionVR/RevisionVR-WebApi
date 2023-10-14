@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.DataAccess.Contexts;
+using RevisionVR.WebApi.Configuration;
 using RevisionVR.WebApi.Middlewares;
 using RevisionVR.WepApi.Extentions;
 
@@ -16,11 +17,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.ConfigureCourtsPolicy();
 builder.Services.AddServices();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -31,6 +31,8 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using RevisionVR.Service.Excaptions;
-using RevisionVR.Service.DTOs.Positions;
-using RevisionVR.Domain.Entities.Devices;
 using RevisionVR.DataAccess.IRepositories;
+using RevisionVR.Domain.Entities.Devices;
 using RevisionVR.Domain.Entities.Positions;
+using RevisionVR.Service.DTOs.Positions;
+using RevisionVR.Service.Excaptions;
 using RevisionVR.Service.Interfaces.Positions;
 
 namespace RevisionVR.Service.Services.Positions;
@@ -43,14 +43,14 @@ public class PositionService : IPositionService
 
     public async Task<IEnumerable<UserPositionResultDto>> UpdateAsync(long deviceId, UserPositionUpdateDto dto)
     {
-        var dbResult = await _repository.SelectAsync(i => i.DeviceId.Equals(deviceId), new[] {"Device"});
+        var dbResult = await _repository.SelectAsync(i => i.DeviceId.Equals(deviceId), new[] { "Device" });
         if (dbResult is null)
             throw new DemoException(404, "Not found Device");
 
         var userPosition = _mapper.Map(dto, dbResult);
         userPosition.Id = deviceId;
         userPosition.UpdatedAt = DateTime.UtcNow;
-        
+
         await _repository.SaveAsync();
 
         return this.GetAll(userPosition.Id);
