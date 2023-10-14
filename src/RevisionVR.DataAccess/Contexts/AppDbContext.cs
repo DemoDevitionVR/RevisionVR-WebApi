@@ -1,6 +1,6 @@
-﻿using RevisionVR.Domain.Entities.Devices;
+﻿using Microsoft.EntityFrameworkCore;
+using RevisionVR.Domain.Entities.Devices;
 using RevisionVR.Domain.Entities.Positions;
-using Microsoft.EntityFrameworkCore;
 
 namespace RevisionVR.DataAccess.Contexts;
 

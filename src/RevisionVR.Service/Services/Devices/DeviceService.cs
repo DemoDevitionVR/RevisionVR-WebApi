@@ -1,9 +1,10 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.Service.Excaptions;
 using RevisionVR.DataAccess.Contexts;
 using RevisionVR.Service.DTOs.Devices;
 using RevisionVR.Domain.Entities.Devices;
+
 using RevisionVR.Service.Interfaces.Devices;
 
 namespace RevisionVR.Service.Services.Devices;

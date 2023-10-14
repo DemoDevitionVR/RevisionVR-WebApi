@@ -1,10 +1,9 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.Service.Excaptions;
 using RevisionVR.DataAccess.Contexts;
 using RevisionVR.Service.DTOs.Positions;
-using RevisionVR.Domain.Entities.Positions;
-using RevisionVR.Service.Interfaces.Positions;
+
 
 namespace RevisionVR.Service.Services.Positions;
 
@@ -46,9 +45,9 @@ public class PositionService : IPositionService
         var userPosition = _mapper.Map(dto, dbResult);
         userPosition.Id = deviceId;
         userPosition.UpdatedAt = DateTime.UtcNow;
+        
         _appDbContext.Positions.Update(userPosition);
         await _appDbContext.SaveChangesAsync();
-
         return this.GetAll(userPosition.Id);
     }
 
