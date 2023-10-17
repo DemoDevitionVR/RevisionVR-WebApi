@@ -14,8 +14,8 @@ public class MappingProfile : Profile
         CreateMap<DeviceUpdateDto, Device>().ReverseMap();
         CreateMap<DeviceCreationDto, Device>().ReverseMap();
 
-        CreateMap<UserPositionResultDto, UserPosition>().ReverseMap();
-        CreateMap<UserPositionUpdateDto, UserPosition>().ReverseMap();
-        CreateMap<UserPositionCreationDto, UserPosition>().ReverseMap();
+        //CreateMap<UserPositionResultDto, UserPosition>().ReverseMap();
+        //CreateMap<UserPositionUpdateDto, UserPosition>().ReverseMap();
+        //CreateMap<UserPositionCreationDto, UserPosition>().ReverseMap();
     }
 }

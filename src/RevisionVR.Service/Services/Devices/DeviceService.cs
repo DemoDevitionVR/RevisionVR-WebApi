@@ -21,7 +21,7 @@ public class DeviceService : IDeviceService
 
     public async Task<DeviceResultDto> CreateAsync(DeviceCreationDto dto)
     {
-        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.DeviceId.Equals(dto.DeviceId));
+        var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.DeviceNumber.Equals(dto.DeviceNumber));
         if (existDevice is not null)
             throw new DemoException(403, "This device already exists");
 
@@ -45,6 +45,7 @@ public class DeviceService : IDeviceService
 
         return _mapper.Map<DeviceResultDto>(mappedDevice);
     }
+    
     public async Task<DeviceResultDto> UpdateIsActiveAsync(long id, bool isActive)
     {
         var existDevice = await _appDbContext.Devices.FirstOrDefaultAsync(d => d.Id.Equals(id));

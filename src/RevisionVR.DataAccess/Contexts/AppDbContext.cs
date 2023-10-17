@@ -10,5 +10,5 @@ public class AppDbContext : DbContext
     { }
 
     public DbSet<Device> Devices { get; set; }
-    public DbSet<UserPosition> Positions { get; set; }
+    //public DbSet<UserPosition> Positions { get; set; }
 }

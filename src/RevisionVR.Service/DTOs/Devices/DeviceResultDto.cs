@@ -1,15 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using RevisionVR.Service.DTOs.Positions;
 
 namespace RevisionVR.Service.DTOs.Devices;
 
 public class DeviceResultDto
 {
-    [JsonProperty("id")]
     public long Id { get; set; }
-    [JsonProperty("deviceId")]
-    public long DeviceId { get; set; }
-    [JsonProperty("name")]
-    public string Name { get; set; }
-    [JsonProperty("isActive")]
+    public string DeviceNumber { get; set; }
     public bool IsActive { get; set; }
+    public DevicePosition? UserPosition { get; set; }
 }
