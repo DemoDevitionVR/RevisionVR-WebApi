@@ -12,6 +12,5 @@ public class UserPositionHub : Hub<IUserPositionHubClient>
         var otherClients = Clients.AllExcept(callerConnectionId);
         await otherClients.SendPositionsAsync(dto);
        
-        await Clients.All.SendPositionsAsync(dto);
     }
 }

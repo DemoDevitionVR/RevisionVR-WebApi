@@ -2,7 +2,5 @@
 
 public class DeviceUpdateDto
 {
-    public long DeviceId { get; set; }
-    public string Name { get; set; }
-    public bool IsActive { get; set; }
+    public string DeviceNumber { get; set; }
 }
