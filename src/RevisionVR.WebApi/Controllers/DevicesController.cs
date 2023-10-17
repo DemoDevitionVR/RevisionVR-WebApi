@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using RevisionVR.WepApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using RevisionVR.Service.DTOs.Devices;
 using RevisionVR.Service.Interfaces.Devices;
-using RevisionVR.WepApi.Models;
 
 namespace RevisionVR.WepApi.Controllers;
 

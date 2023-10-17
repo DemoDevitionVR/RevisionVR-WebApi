@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.WebApi", "src\RevisionVR.WebApi\RevisionVR.WebApi.csproj", "{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.Domain", "src\RevisionVR.Domain\RevisionVR.Domain.csproj", "{3F186B17-1883-4063-ADBC-5BCC15C80508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.Service", "src\RevisionVR.Service\RevisionVR.Service.csproj", "{777108C2-E2F0-4232-A6BE-9298539FD17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.Service", "src\RevisionVR.Service\RevisionVR.Service.csproj", "{777108C2-E2F0-4232-A6BE-9298539FD17C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisionVR.DataAccess", "src\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj", "{24C74CC7-044E-47AB-9A03-C859881048D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.DataAccess", "src\RevisionVR.DataAccess\RevisionVR.DataAccess.csproj", "{24C74CC7-044E-47AB-9A03-C859881048D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.Wep", "src\RevisionVR.Wep\RevisionVR.Wep.csproj", "{8CCD7642-B1EE-4E0B-B26A-EB2B4002CE32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisionVR.WebApi", "src\RevisionVR.WebApi\RevisionVR.WebApi.csproj", "{2AE2076D-CB4D-471B-AEFD-BADB55E5FEC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30B1FC03-D0C2-44DA-BA65-C6EF953C373F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F186B17-1883-4063-ADBC-5BCC15C80508}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{24C74CC7-044E-47AB-9A03-C859881048D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24C74CC7-044E-47AB-9A03-C859881048D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24C74CC7-044E-47AB-9A03-C859881048D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CCD7642-B1EE-4E0B-B26A-EB2B4002CE32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CCD7642-B1EE-4E0B-B26A-EB2B4002CE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CCD7642-B1EE-4E0B-B26A-EB2B4002CE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CCD7642-B1EE-4E0B-B26A-EB2B4002CE32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE2076D-CB4D-471B-AEFD-BADB55E5FEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE2076D-CB4D-471B-AEFD-BADB55E5FEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE2076D-CB4D-471B-AEFD-BADB55E5FEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE2076D-CB4D-471B-AEFD-BADB55E5FEC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

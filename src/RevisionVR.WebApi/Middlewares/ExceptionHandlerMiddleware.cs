@@ -1,5 +1,5 @@
-﻿using RevisionVR.Service.Excaptions;
-using RevisionVR.WepApi.Models;
+﻿using RevisionVR.WepApi.Models;
+using RevisionVR.Service.Excaptions;
 
 namespace RevisionVR.WebApi.Middlewares;
 

@@ -3,15 +3,16 @@ using RevisionVR.DataAccess.Contexts;
 using RevisionVR.WebApi.Configuration;
 using RevisionVR.WebApi.Middlewares;
 using RevisionVR.WepApi.Extentions;
+using RevisionVR.WepApi.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -21,7 +22,7 @@ builder.ConfigureCourtsPolicy();
 builder.Services.AddServices();
 
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -32,10 +33,9 @@ app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");
-
 app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapHub<UserPositionHub>("/userPositionHub");
 app.Run();
