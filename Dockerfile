@@ -12,7 +12,6 @@ WORKDIR /src/RevisionVR.WebApi
 RUN dotnet restore
 
 RUN dotnet publish -c Release -o output
-
 #RUN dotnet ef database update
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS serve

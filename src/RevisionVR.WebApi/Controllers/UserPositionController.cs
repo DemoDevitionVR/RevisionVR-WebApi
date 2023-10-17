@@ -34,6 +34,12 @@ public class UserPositionController : BaseController
         var callerConnectionId = HttpContext.Connection.Id;
         var otherClients = _hubContext.Clients.AllExcept(new[] { callerConnectionId });
         await otherClients.SendPositionsAsync(position);
+        Console.WriteLine(position.DeviceNumber);
+        Console.WriteLine(position.Name);
+        Console.WriteLine(position.Head);
+        Console.WriteLine(position.Main);
+        Console.WriteLine(position.LeftHand);
+        Console.WriteLine(position.RightHand);
         return Ok(); 
     }
 }
