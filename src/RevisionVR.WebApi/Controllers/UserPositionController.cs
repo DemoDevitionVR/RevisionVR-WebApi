@@ -10,7 +10,7 @@ namespace RevisionVR.WepApi.Controllers;
 
 public class UserPositionController : BaseController
 {
-    private readonly IPositionService _positionService;
+  /*  private readonly IPositionService _positionService;
     private IHubContext<UserPositionHub, IUserPositionHubClient> _hubContext;
     public UserPositionController(
         IPositionService positionService,
@@ -41,5 +41,5 @@ public class UserPositionController : BaseController
         Console.WriteLine(position.LeftHand);
         Console.WriteLine(position.RightHand);
         return Ok(); 
-    }
+    }*/
 }
