@@ -2,10 +2,9 @@
 
 public class DevicePosition
 {
-    public string Name { get; set; }
-    public string Main { get; set; }
-    public string Head { get; set; }
-    public string LeftHand { get; set; }
-    public string RightHand { get; set; }
-    public string DeviceNumber { get; set; }
+   // public string Name { get; set; }
+    //public string DeviceNumber { get; set; }
+    public float MainX { get; set; }
+    public float MainY { get; set; }
+    public float MainZ { get; set; }
 }

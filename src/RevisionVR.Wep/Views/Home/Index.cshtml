@@ -1,6 +1,4 @@
-﻿@using RevisionVR.Service.DTOs.Positions;
-@model UserPositionCreationDto;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,41 +8,30 @@
 </head>
 <body>
     <div>
-        <input type="text" id="username" placeholder="Enter your username" />
-        <input type="text" id="main" placeholder="Enter your main position" />
-        <input type="text" id="head" placeholder="Enter your head position" />
-        <input type="text" id="leftHand" placeholder="Enter your left hand position" />
-        <input type="text" id="rightHand" placeholder="Enter your right hand position" />
-        <input type="text" id="deviceNumber" placeholder="Enter your device number position" />
+        <input type="text" id="mainx" placeholder="Enter your main x" />
+        <input type="text" id="mainz" placeholder="Enter your main y" />
+        <input type="text" id="mainz" placeholder="Enter your main z" />
         <button id="sendButton">Send</button>
     </div>
     <div id="chatBox"></div>
     <script>
         var connection = new signalR.HubConnectionBuilder().withUrl("/userPositionHub").build();
 
-        connection.on("ReceivePosition", function (user, main, head, leftHand, rightHand, deviceNumber) {
-            var encodedUser = $("<div />").text(user).html();
-            var encodedMsg = $("<div />").text(main).html();
-            var encodedHead = $("<div />").text(head).html();
-            var encodedLeft = $("<div />").text(leftHand).html();
-            var encodedRight = $("<div />").text(rightHand).html();
-            var encodedDevice = $("<div />").text(deviceNumber).html();
-            $("#chatBox").append("<p><strong>" + encodedUser + "</strong>: " + encodedMsg + ", "
-                + encodedHead + ", " + encodedLeft + ", " + encodedRight + ", " + encodedDevice + "</p>");
+        connection.on("SendPosition", function (mainx, mainy, mainz) {
+            var encodedX = $("<div />").text(mainx).html();
+            var encodedY = $("<div />").text(mainy).html();
+            var encodedZ = $("<div />").text(mainz).html();
+            $("#chatBox").append("<p><strong>" + encodedX + "</strong>: " + encodedY + ", " + encodedZ + "</p>");
         });
 
         $("#sendButton").click(function () {
-            var user = $("#username").val();
-            var main = $("#main").val();
-            var head = $("#head").val();
-            var leftHand = $("#leftHand").val();
-            var rightHand = $("#rightHand").val();
-            var deviceNumber = $("#deviceNumber").val();
-            connection.invoke("SendPositionsAsync", user, main, head, leftHand, rightHand, deviceNumber);
-            $("#main").val("").focus();
-            $("#head").val("").focus();
-            $("#leftHand").val("").focus();
-            $("#rightHand").val("").focus();
+            var mainx = $("#mainx").val();
+            var mainy = $("#mainy").val();
+            var mainz = $("#mainz").val();
+            connection.invoke("SendPosition", mainx, mainy, mainz);
+            $("#mainx").val("").focus();
+            $("#mainy").val("").focus();
+            $("#mainz").val("").focus();
         });
 
         connection.start().then(function () {
