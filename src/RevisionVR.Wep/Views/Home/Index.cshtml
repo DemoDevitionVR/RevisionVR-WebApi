@@ -1,56 +1,54 @@
-﻿@using RevisionVR.Service.DTOs.Positions;
-@model UserPositionCreationDto;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Real-Time Chat with SignalR</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.13/signalr.min.js"></script>
+    <title>Device Position Updates</title>
 </head>
 <body>
-    <div>
-        <input type="text" id="username" placeholder="Enter your username" />
-        <input type="text" id="main" placeholder="Enter your main position" />
-        <input type="text" id="head" placeholder="Enter your head position" />
-        <input type="text" id="leftHand" placeholder="Enter your left hand position" />
-        <input type="text" id="rightHand" placeholder="Enter your right hand position" />
-        <input type="text" id="deviceNumber" placeholder="Enter your device number position" />
-        <button id="sendButton">Send</button>
-    </div>
-    <div id="chatBox"></div>
+    <div id="positionUpdates"></div>
+
+    <input type="text" id="xInput" placeholder="X Coordinate">
+    <input type="text" id="yInput" placeholder="Y Coordinate">
+    <input type="text" id="zInput" placeholder="Z Coordinate">
+    <button id="sendButton">Send Position</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+
     <script>
-        var connection = new signalR.HubConnectionBuilder().withUrl("/userPositionHub").build();
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/DevicePositionHub") // Adjust the URL to match your SignalR hub endpoint
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
 
-        connection.on("ReceivePosition", function (user, main, head, leftHand, rightHand, deviceNumber) {
-            var encodedUser = $("<div />").text(user).html();
-            var encodedMsg = $("<div />").text(main).html();
-            var encodedHead = $("<div />").text(head).html();
-            var encodedLeft = $("<div />").text(leftHand).html();
-            var encodedRight = $("<div />").text(rightHand).html();
-            var encodedDevice = $("<div />").text(deviceNumber).html();
-            $("#chatBox").append("<p><strong>" + encodedUser + "</strong>: " + encodedMsg + ", "
-                + encodedHead + ", " + encodedLeft + ", " + encodedRight + ", " + encodedDevice + "</p>");
-        });
+        connection.start()
+            .then(() => {
+                console.log("Connected to DevicePositionHub");
 
-        $("#sendButton").click(function () {
-            var user = $("#username").val();
-            var main = $("#main").val();
-            var head = $("#head").val();
-            var leftHand = $("#leftHand").val();
-            var rightHand = $("#rightHand").val();
-            var deviceNumber = $("#deviceNumber").val();
-            connection.invoke("SendPositionsAsync", user, main, head, leftHand, rightHand, deviceNumber);
-            $("#main").val("").focus();
-            $("#head").val("").focus();
-            $("#leftHand").val("").focus();
-            $("#rightHand").val("").focus();
-        });
+                connection.on("OnPositionReceived1", (index, x, y, z) => {
+                    // Handle updates for method name "OnPositionReceived1"
+                    document.getElementById("positionUpdates").innerHTML +=
+                        `Index: ${index}, X: ${x}, Y: ${y}, Z: ${z}<br>`;
+                });
+            })
+            .catch(error => console.error(`Error: ${error}`));
 
-        connection.start().then(function () {
-            console.log("Connected!");
-        }).catch(function (err) {
-            console.error(err.toString());
+        document.getElementById("sendButton").addEventListener("click", () => {
+            const x = parseFloat(document.getElementById("xInput").value);
+            const y = parseFloat(document.getElementById("yInput").value);
+            const z = parseFloat(document.getElementById("zInput").value);
+
+            if (!isNaN(x) && !isNaN(y) && !isNaN(z)) {
+                connection.invoke("BroadcastPosition", x, y, z).catch(error => {
+                    console.error(`Error sending position: ${error}`);
+                });
+
+                // Clear input fields after sending
+                document.getElementById("xInput").value = "";
+                document.getElementById("yInput").value = "";
+                document.getElementById("zInput").value = "";
+            } else {
+                console.error("Invalid input. Please enter valid coordinates.");
+            }
         });
     </script>
 </body>

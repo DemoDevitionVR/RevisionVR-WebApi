@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RevisionVR.DataAccess.Contexts;
 using RevisionVR.WebApi.Configuration;
+using RevisionVR.WebApi.Hubs;
 using RevisionVR.WebApi.Middlewares;
 using RevisionVR.WepApi.Extentions;
 using RevisionVR.WepApi.Hubs;
@@ -38,4 +39,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHub<UserPositionHub>("/NotificationHub");
+app.MapHub<DevicePositionHub>("/DevicePositionHub");
+
 app.Run();

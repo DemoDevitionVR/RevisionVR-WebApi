@@ -28,4 +28,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<UserPositionHub>("/userPositionHub");
+app.MapHub<DevicePositionHub>("/DevicePositionHub");
 app.Run();
