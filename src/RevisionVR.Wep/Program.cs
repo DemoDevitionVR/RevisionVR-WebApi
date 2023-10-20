@@ -1,4 +1,4 @@
-using RevisionVR.Wep.Hubs;
+using RevisionVR.WepApi.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,5 +27,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapHub<UserPositionHub>("/userPositionHub");
+app.MapHub<DevicePositionHub>("/DevicePositionHub");
 app.Run();

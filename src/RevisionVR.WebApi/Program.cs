@@ -37,5 +37,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<UserPositionHub>("/NotificationHub");
+app.MapHub<DevicePositionHub>("/DevicePositionHub");
+
 app.Run();
