@@ -34,7 +34,6 @@ public class UserPositionHub : Hub//<IUserPositionHubClient>
         await Clients.Others.SendAsync("OnMessageReceived", id, x, y, z);
     }
 
-
     public async Task SendMessage(string user, string message)
     {
         await Clients.Others.SendAsync("ReceiveMessage", user, message);
