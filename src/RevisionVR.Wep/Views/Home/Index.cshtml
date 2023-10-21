@@ -1,55 +1,41 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Device Position Updates</title>
-</head>
-<body>
-    <div id="positionUpdates"></div>
-
-    <input type="text" id="xInput" placeholder="X Coordinate">
-    <input type="text" id="yInput" placeholder="Y Coordinate">
-    <input type="text" id="zInput" placeholder="Z Coordinate">
-    <button id="sendButton">Send Position</button>
-
+    <title>SignalR Client</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.13/signalr.min.js"></script>
     <script>
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/DevicePositionHub") // Adjust the URL to match your SignalR hub endpoint
-            .configureLogging(signalR.LogLevel.Information)
-            .build();
+        $(document).ready(function () {
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/genericHub") // Change the URL to match your SignalR hub endpoint
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
 
-        connection.start()
-            .then(() => {
-                console.log("Connected to DevicePositionHub");
+            connection.on("OnPositionReceived1", (index, x, y, z) => {
+                // Handle data received from the server
+                console.log(`Received data: Index: ${index}, x: ${x}, y: ${y}, z: ${z}`);
+            });
 
-                connection.on("OnPositionReceived1", (index, x, y, z) => {
-                    // Handle updates for method name "OnPositionReceived1"
-                    document.getElementById("positionUpdates").innerHTML +=
-                        `Index: ${index}, X: ${x}, Y: ${y}, Z: ${z}<br>`;
-                });
-            })
-            .catch(error => console.error(`Error: ${error}`));
+            connection.start()
+                .then(() => {
+                    console.log("Connected to the hub.");
 
-        document.getElementById("sendButton").addEventListener("click", () => {
-            const x = parseFloat(document.getElementById("xInput").value);
-            const y = parseFloat(document.getElementById("yInput").value);
-            const z = parseFloat(document.getElementById("zInput").value);
-
-            if (!isNaN(x) && !isNaN(y) && !isNaN(z)) {
-                connection.invoke("BroadcastPosition", x, y, z).catch(error => {
-                    console.error(`Error sending position: ${error}`);
-                });
-
-                // Clear input fields after sending
-                document.getElementById("xInput").value = "";
-                document.getElementById("yInput").value = "";
-                document.getElementById("zInput").value = "";
-            } else {
-                console.error("Invalid input. Please enter valid coordinates.");
-            }
+                    // Add your logic to send data to the server here
+                    $("#sendButton").click(function () {
+                        const x = parseFloat($("#xValue").val());
+                        const y = parseFloat($("#yValue").val());
+                        const z = parseFloat($("#zValue").val());
+                        connection.invoke("BroadcastPosition", x, y, z).catch(err => console.error(err));
+                    });
+                })
+                .catch(err => console.error(`Connection error: ${err}`));
         });
     </script>
+</head>
+<body>
+    <input type="text" id="xValue" placeholder="X Value">
+    <input type="text" id="yValue" placeholder="Y Value">
+    <input type="text" id="zValue" placeholder="Z Value">
+    <button id="sendButton">Send Position</button>
 </body>
 </html>
